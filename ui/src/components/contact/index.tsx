@@ -96,7 +96,7 @@ const ContactComponent = () => {
       });
 
       if (response.ok) {
-        const responseData = await response.json();
+        await response.json();
         setSuccessMessage(
           "Message sent successfully. We will reach you within the next 24 hours. Thank you!"
         );
