@@ -34,7 +34,7 @@
   box-shadow: none;
 }
 .main-bg {
-  background-image: url("../../../public/main/manish_profile.png");
+  background-image: url("../public/main/manish_profile.png");
   width: 100%;
   background-repeat: no-repeat;
   background-size: cover;
@@ -43,7 +43,7 @@
 /* Mobile-specific background style */
 @media only screen and (max-width: 768px) {
   .main-bg {
-    background-image: url("../../../public/main/manish-mobile.png");
+    background-image: url("../public/main/manish-mobile.png");
   }
 }
 .mid-bg {
