@@ -5,10 +5,10 @@ import "./newStyles.css";
 import BlogsComponent from "./pages/blogs";
 import HomeComponent from "./pages/home";
 import SelectedBlog from "./pages/selectedBlog";
-import { useTheme } from "./pages/useTheme";
+// import { useTheme } from "./pages/useTheme";
 
 const DefaultComponent = () => {
-  const { theme, toggleTheme } = useTheme();
+  // const { theme, toggleTheme } = useTheme();
 
   return (
     <div className="white-version">
@@ -45,15 +45,15 @@ const DefaultComponent = () => {
             >
               <i className="feather-twitter"></i>
             </a>
-            &nbsp;
-            <a
+            {/* &nbsp; */}
+            {/* <a
               target="_blank"
               className="color"
               onClick={toggleTheme}
               // href="https://x.com/Manishgandotra1"
             >
               <i className="feather-twitter"></i>
-            </a>
+            </a> */}
           </span>
         </button>
       </div>
