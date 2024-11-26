@@ -6,11 +6,8 @@ import LogoComponent from "../components/logo";
 import { useEffect, useState } from "react";
 import ImageComponent from "../components/image";
 
-const navFields = [
-  { name: "Home", path: "/" },
-  { name: "Blog", path: "/blogs" },
-  { name: "Contact", path: "#contact" },
-];
+const hrefFields = [{ name: "Contact", path: "#contact" }];
+const navFields = [{ name: "Home", path: "/" }];
 const BlogsComponent = () => {
   const navigate = useNavigate();
   const [headerClass, setHeaderClass] = useState<string>("");
@@ -68,6 +65,16 @@ const BlogsComponent = () => {
                         <li className="nav-item" key={item.path}>
                           <a
                             className="nav-link smoth-animation "
+                            onClick={() => navigate(item.path)}
+                          >
+                            {item.name}
+                          </a>
+                        </li>
+                      ))}
+                      {hrefFields.map((item) => (
+                        <li className="nav-item" key={item.path}>
+                          <a
+                            className="nav-link smoth-animation "
                             href={item.path}
                           >
                             {item.name}
@@ -104,9 +111,16 @@ const BlogsComponent = () => {
               {navFields.map((item) => (
                 <li className="nav-item" key={item.path}>
                   <a
-                    className="nav-link smoth-animation active cursoring"
-                    href={item.path}
+                    className="nav-link smoth-animation "
+                    onClick={() => navigate(item.path)}
                   >
+                    {item.name}
+                  </a>
+                </li>
+              ))}
+              {hrefFields.map((item) => (
+                <li className="nav-item" key={item.path}>
+                  <a className="nav-link smoth-animation " href={item.path}>
                     {item.name}
                   </a>
                 </li>

@@ -3,17 +3,19 @@ import { useEffect, useState } from "react";
 import ContactComponent from "../components/contact";
 import Footer from "../components/footer";
 import { blogs } from "../jsons/blogs";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import ImageComponent from "../components/image";
 
 const SelectedBlog = () => {
+  const hrefFields = [{ name: "Contact", path: "#contact" }];
   const navFields = [
     { name: "Home", path: "/" },
     { name: "Blog", path: "/blogs" },
-    { name: "Contact", path: "#contact" },
   ];
+
   const [headerClass, setHeaderClass] = useState<string>("");
   const [isSidenavOpen, setIsSidenavOpen] = useState<boolean>(false);
+  const navigate = useNavigate();
 
   const { id } = useParams();
   useEffect(() => {
@@ -66,8 +68,15 @@ const SelectedBlog = () => {
                     <li className="nav-item" key={item.path}>
                       <a
                         className="nav-link smoth-animation "
-                        href={`${item.path}`}
+                        onClick={() => navigate(item.path)}
                       >
+                        {item.name}
+                      </a>
+                    </li>
+                  ))}
+                  {hrefFields.map((item) => (
+                    <li className="nav-item" key={item.path}>
+                      <a className="nav-link smoth-animation " href={item.path}>
                         {item.name}
                       </a>
                     </li>
@@ -102,9 +111,16 @@ const SelectedBlog = () => {
           {navFields.map((item) => (
             <li className="nav-item" key={item.path}>
               <a
-                className="nav-link smoth-animation active cursoring"
-                href={`${item.path}`}
+                className="nav-link smoth-animation "
+                onClick={() => navigate(item.path)}
               >
+                {item.name}
+              </a>
+            </li>
+          ))}
+          {hrefFields.map((item) => (
+            <li className="nav-item" key={item.path}>
+              <a className="nav-link smoth-animation " href={item.path}>
                 {item.name}
               </a>
             </li>
