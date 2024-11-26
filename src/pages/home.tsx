@@ -8,7 +8,6 @@ import ResumeComponent from "../components/resume";
 import PortfolioComponent from "../components/portfolio";
 import LogoComponent from "../components/logo";
 import ImageComponent from "../components/image";
-import "./test.css";
 import { useTheme } from "./useTheme";
 
 const navFields = [

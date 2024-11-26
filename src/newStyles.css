@@ -112,3 +112,96 @@ pre {
   align-items: center;
   height: 100vh;
 }
+/* sidebar` */
+
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.logo {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+/* Mobile Menu Icon */
+.mobile-menu-icon {
+  display: none;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+/* Sidebar for Mobile */
+.mobile-sidebar {
+  position: fixed;
+  top: 0;
+  left: -100%;
+  width: 300px;
+  height: 100%;
+  background-color: white;
+  /* color: white; */
+  color: #333;
+  display: flex;
+  flex-direction: column;
+  transition: left 0.3s ease-in-out;
+}
+
+.mobile-sidebar.active {
+  z-index: 9999;
+  position: fixed;
+  content: "";
+  height: 100%;
+  width: 300px;
+  position: fixed;
+  color: #333;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  background-color: white;
+}
+
+.mobile-sidebar .close-button {
+  font-size: 30px;
+  align-self: flex-end;
+  cursor: pointer;
+}
+
+.mobile-sidebar ul {
+  list-style: none;
+  margin-top: 20px;
+}
+
+.mobile-sidebar ul li {
+  margin: 15px 0;
+}
+
+.mobile-sidebar ul li a {
+  text-decoration: none;
+  color: #333;
+
+  font-size: 18px;
+  transition: color 0.3s;
+}
+
+.mobile-sidebar ul li a:hover {
+  color: #ff014f;
+}
+
+/* Content Area */
+.content {
+  margin-top: 40px; /* Space for fixed topbar */
+  text-align: center;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .desktop-nav {
+    display: none;
+  }
+
+  .mobile-menu-icon {
+    display: block;
+  }
+}
