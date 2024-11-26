@@ -51,46 +51,6 @@ const ContactComponent = () => {
       setErrors(fieldErrors);
       return;
     }
-
-    try {
-      const accountSid = "AC65721a3910c03fa33b61c6c5555b93df"; // Replace with your actual SID
-      const authToken = "184ea91533099596b4b4c87932cf684f"; // Replace with your actual Auth Token
-      const url = `https://api.twilio.com/2010-04-01/Accounts/${accountSid}/Messages.json`;
-
-      const data = new URLSearchParams();
-      data.append("To", "+918800463103");
-      data.append("From", "+12085563949");
-      data.append(
-        "Body",
-        `Hi, my name is ${fields.name} (${fields.phone}, ${fields.email}). I want to connect for ${fields.message}`
-      );
-
-      const response = await fetch(url, {
-        method: "POST",
-        body: data,
-        headers: {
-          Authorization: `Basic ${btoa(`${accountSid}:${authToken}`)}`,
-        },
-      });
-
-      if (response.ok) {
-        setSuccessMessage(
-          "Message sent successfully. We will reach you within the next 24 hours. Thank you!"
-        );
-        setFields({
-          name: "",
-          message: "",
-          email: "",
-          phone: "",
-          subject: "",
-        }); // Clear form fields
-      } else {
-        setSuccessMessage("");
-      }
-    } catch (error) {
-      console.error("Error:", error);
-      setSuccessMessage("");
-    }
   };
 
   return (
