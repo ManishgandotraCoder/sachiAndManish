@@ -11,7 +11,7 @@ import ImageComponent from "../components/image";
 import { useTheme } from "./useTheme";
 
 const navFields = [
-  { name: "Home", path: "#home" },
+  { name: "Home", path: "#" },
   { name: "About", path: "#about" },
   { name: "What I do", path: "#whatIdo" },
   { name: "Portfolio", path: "#portfolio" },
@@ -44,7 +44,7 @@ function HomeComponent() {
   };
   return (
     <>
-      <main className="main-page-wrapper white-version" id="home">
+      <main className="main-page-wrapper white-version" id="#">
         <ImageComponent />
         {/* <ResponsiveNavbar /> */}
         <header

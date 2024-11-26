@@ -9,8 +9,8 @@ import ImageComponent from "../components/image";
 const SelectedBlog = () => {
   const hrefFields = [{ name: "Contact", path: "#contact" }];
   const navFields = [
-    { name: "Home", path: "/" },
-    { name: "Blog", path: "/blogs" },
+    { name: "Home", path: "/#" },
+    { name: "Blog", path: "/blogs#" },
   ];
 
   const [headerClass, setHeaderClass] = useState<string>("");
@@ -67,8 +67,13 @@ const SelectedBlog = () => {
                   {navFields.map((item) => (
                     <li className="nav-item" key={item.path}>
                       <a
+                        style={{ cursor: "pointer" }}
                         className="nav-link smoth-animation "
-                        onClick={() => navigate(item.path)}
+                        onClick={() => {
+                          navigate(item.path);
+                          document.body.scrollTop = 0;
+                          document.documentElement.scrollTop = 0;
+                        }}
                       >
                         {item.name}
                       </a>
@@ -111,8 +116,13 @@ const SelectedBlog = () => {
           {navFields.map((item) => (
             <li className="nav-item" key={item.path}>
               <a
+                style={{ cursor: "pointer" }}
                 className="nav-link smoth-animation "
-                onClick={() => navigate(item.path)}
+                onClick={() => {
+                  navigate(item.path);
+                  document.body.scrollTop = 0;
+                  document.documentElement.scrollTop = 0;
+                }}
               >
                 {item.name}
               </a>

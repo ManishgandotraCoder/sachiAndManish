@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 import ImageComponent from "../components/image";
 
 const hrefFields = [{ name: "Contact", path: "#contact" }];
-const navFields = [{ name: "Home", path: "/" }];
+const navFields = [{ name: "Home", path: "/#" }];
 const BlogsComponent = () => {
   const navigate = useNavigate();
   const [headerClass, setHeaderClass] = useState<string>("");
@@ -33,7 +33,7 @@ const BlogsComponent = () => {
   return (
     <>
       <div>
-        <main className="main-page-wrapper white-version" id="home">
+        <main className="main-page-wrapper white-version" id="#">
           <ImageComponent />
           <header
             className={`white-version rn-header haeder-default black-logo-version ${headerClass}`}
@@ -64,8 +64,13 @@ const BlogsComponent = () => {
                       {navFields.map((item) => (
                         <li className="nav-item" key={item.path}>
                           <a
+                            style={{ cursor: "pointer" }}
                             className="nav-link smoth-animation "
-                            onClick={() => navigate(item.path)}
+                            onClick={() => {
+                              navigate(item.path);
+                              document.body.scrollTop = 0;
+                              document.documentElement.scrollTop = 0;
+                            }}
                           >
                             {item.name}
                           </a>
@@ -112,7 +117,11 @@ const BlogsComponent = () => {
                 <li className="nav-item" key={item.path}>
                   <a
                     className="nav-link smoth-animation "
-                    onClick={() => navigate(item.path)}
+                    onClick={() => {
+                      navigate(item.path);
+                      document.body.scrollTop = 0;
+                      document.documentElement.scrollTop = 0;
+                    }}
                   >
                     {item.name}
                   </a>
