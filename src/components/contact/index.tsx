@@ -12,28 +12,49 @@ const ContactComponent = () => {
     subject: "",
   });
 
-  // const [successMessage, setSuccessMessage] = useState("");
+  const [successMessage, setSuccessMessage] = useState("");
   const [errors, setErrors] = useState<Record<string, string>>({});
 
   const validateFields = () => {
     const newErrors: Record<string, string> = {};
-    if (!fields.name.trim()) newErrors.name = "Name is required.";
+
+    // Name validation
+    if (!fields.name.trim()) {
+      newErrors.name = "Name is required.";
+    } else if (fields.name.length < 2) {
+      newErrors.name = "Name must be at least 2 characters.";
+    }
+
+    // Phone validation
     if (!fields.phone.trim()) {
       newErrors.phone = "Phone number is required.";
     } else if (!/^\d{10}$/.test(fields.phone)) {
       newErrors.phone = "Phone number must be 10 digits.";
     }
+
+    // Email validation
     if (!fields.email.trim()) {
       newErrors.email = "Email is required.";
-    } else if (!/\S+@\S+\.\S+/.test(fields.email)) {
+    } else if (
+      !/^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/.test(fields.email)
+    ) {
       newErrors.email = "Please enter a valid email.";
     }
-    if (!fields.subject.trim() || fields.subject.length < 3) {
+
+    // Subject validation
+    if (!fields.subject.trim()) {
+      newErrors.subject = "Subject is required.";
+    } else if (fields.subject.length < 3) {
       newErrors.subject = "Subject must be at least 3 characters.";
     }
+
+    // Message validation
     if (!fields.message.trim()) {
       newErrors.message = "Message is required.";
+    } else if (fields.message.length < 10) {
+      newErrors.message = "Message must be at least 10 characters.";
     }
+
     return newErrors;
   };
 
@@ -43,13 +64,31 @@ const ContactComponent = () => {
     setErrors((prevErrors) => ({ ...prevErrors, [name]: "" })); // Clear errors on change
   };
 
-  const sendMessage = async (e: any) => {
+  const sendMessage = async (e: React.FormEvent) => {
     e.preventDefault();
-    const fieldErrors = validateFields();
 
+    const fieldErrors = validateFields();
     if (Object.keys(fieldErrors).length > 0) {
       setErrors(fieldErrors);
       return;
+    }
+
+    try {
+      // Dummy success response simulation
+      setSuccessMessage(
+        "Message sent successfully. We will reach out within 24 hours. Thank you!"
+      );
+      setFields({
+        name: "",
+        message: "",
+        email: "",
+        phone: "",
+        subject: "",
+      });
+      setErrors({});
+    } catch (error) {
+      console.error("Error:", error);
+      setSuccessMessage("");
     }
   };
 
@@ -128,6 +167,7 @@ const ContactComponent = () => {
             <div className="contact-input" data-aos-delay="600">
               <div className="contact-form-wrapper">
                 <form onSubmit={sendMessage} className="contact-form">
+                  {/* Name */}
                   <div className="form-group">
                     <label htmlFor="contact-name">Your Name</label>
                     <input
@@ -135,12 +175,12 @@ const ContactComponent = () => {
                       name="name"
                       value={fields.name}
                       onChange={handleChange}
-                      title="Name is required"
-                      required
+                      placeholder="Enter your name"
                     />
                     {errors.name && <p className="error-msg">{errors.name}</p>}
                   </div>
 
+                  {/* Phone */}
                   <div className="form-group">
                     <label htmlFor="contact-phone">Phone Number</label>
                     <input
@@ -148,13 +188,14 @@ const ContactComponent = () => {
                       name="phone"
                       value={fields.phone}
                       onChange={handleChange}
-                      required
+                      placeholder="Enter your phone number"
                     />
                     {errors.phone && (
                       <p className="error-msg">{errors.phone}</p>
                     )}
                   </div>
 
+                  {/* Email */}
                   <div className="form-group">
                     <label htmlFor="contact-email">Email</label>
                     <input
@@ -162,13 +203,14 @@ const ContactComponent = () => {
                       name="email"
                       value={fields.email}
                       onChange={handleChange}
-                      required
+                      placeholder="Enter your email"
                     />
                     {errors.email && (
                       <p className="error-msg">{errors.email}</p>
                     )}
                   </div>
 
+                  {/* Subject */}
                   <div className="form-group">
                     <label htmlFor="contact-subject">Subject</label>
                     <input
@@ -176,13 +218,14 @@ const ContactComponent = () => {
                       name="subject"
                       value={fields.subject}
                       onChange={handleChange}
-                      required
+                      placeholder="Enter your subject"
                     />
                     {errors.subject && (
                       <p className="error-msg">{errors.subject}</p>
                     )}
                   </div>
 
+                  {/* Message */}
                   <div className="form-group">
                     <label htmlFor="contact-message">Your Message</label>
                     <textarea
@@ -190,24 +233,21 @@ const ContactComponent = () => {
                       name="message"
                       value={fields.message}
                       onChange={handleChange}
-                      required
+                      placeholder="Enter your message"
                     />
                     {errors.message && (
                       <p className="error-msg">{errors.message}</p>
                     )}
                   </div>
 
-                  <a
-                    type="submit"
-                    className="rn-btn"
-                    style={{ width: "100%", textAlign: "center" }}
-                  >
+                  {/* Submit Button */}
+                  <button type="submit" className="rn-btn">
                     SEND MESSAGE
-                  </a>
-                  {errors.form && <p className="error-msg">{errors.form}</p>}
-                  {/* {successMessage && (
+                  </button>
+                  {/* Success Message */}
+                  {successMessage && (
                     <p className="success-msg">{successMessage}</p>
-                  )} */}
+                  )}
                 </form>
               </div>
             </div>{" "}
