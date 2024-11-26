@@ -75,7 +75,7 @@ const AboutComponent = () => {
           </div>
           <div className="personal-experience-inner">
             <div className="row row--40">
-              {skillsData.map((item, index) => (
+              {skillsData.map((item) => (
                 <div
                   key={item.name}
                   // style={{ paddingBottom: "20px" }}

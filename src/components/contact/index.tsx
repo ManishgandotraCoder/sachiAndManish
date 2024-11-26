@@ -12,7 +12,7 @@ const ContactComponent = () => {
     subject: "",
   });
 
-  const [successMessage, setSuccessMessage] = useState("");
+  // const [successMessage, setSuccessMessage] = useState("");
   const [errors, setErrors] = useState<Record<string, string>>({});
 
   const validateFields = () => {
@@ -205,9 +205,9 @@ const ContactComponent = () => {
                     SEND MESSAGE
                   </a>
                   {errors.form && <p className="error-msg">{errors.form}</p>}
-                  {successMessage && (
+                  {/* {successMessage && (
                     <p className="success-msg">{successMessage}</p>
-                  )}
+                  )} */}
                 </form>
               </div>
             </div>{" "}

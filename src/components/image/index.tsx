@@ -1,5 +1,3 @@
-import { useEffect, useState } from "react";
-
 const ImageComponent = () => {
   return (
     <div className="main-bg">

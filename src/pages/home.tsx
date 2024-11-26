@@ -24,7 +24,7 @@ function HomeComponent() {
   const [openedProject, setOpenedProject] = useState<any>({});
   const [headerClass, setHeaderClass] = useState<string>("");
   const [isSidenavOpen, setIsSidenavOpen] = useState<boolean>(false);
-  const { theme, toggleTheme } = useTheme();
+  const { theme } = useTheme();
 
   useEffect(() => {
     const handleScroll = () => {

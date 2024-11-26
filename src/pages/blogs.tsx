@@ -133,7 +133,7 @@ const BlogsComponent = () => {
                 </div>
               </div>
               <div className="row row--25 mt--30 mt_md--10 mt_sm--10">
-                {blogs.map((blog, index) => (
+                {blogs.map((blog) => (
                   <div
                     key={blog.id}
                     data-aos="fade-up"
